@@ -17,8 +17,13 @@ app.use(cors());
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
+    console.log(err);
   const productsCollection = client.db("emaJhonStore").collection("product");
   const ordersCollection = client.db("emaJohnStore").collection("orders");
+
+  app.get('/', (req, res) => {
+      res.send('hello world');
+  })
 
   app.post('/addProducts', (req, res) => {
       const products = req.body;
@@ -37,6 +42,7 @@ client.connect(err => {
       })
   })
 
+  
 
   app.get('/product/:key', (req, res) => {
     productsCollection.find({key: req.params.key})
