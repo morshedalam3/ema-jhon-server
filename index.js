@@ -21,9 +21,7 @@ client.connect(err => {
   const productsCollection = client.db("emaJhonStore").collection("product");
   const ordersCollection = client.db("emaJohnStore").collection("orders");
 
-  app.get('/', (req, res) => {
-      res.send('hello world');
-  })
+ 
 
   app.post('/addProducts', (req, res) => {
       const products = req.body;
@@ -69,5 +67,11 @@ app.post('/addOrder', (req, res) => {
 
 });
 
+app.get('/', (req, res) => {
+    res.send('hello world');
+})
 
-app.listen(process.env.PORT || port)
+
+app.listen(process.env.PORT || port, () =>{
+    console.log('iam listening')
+})
