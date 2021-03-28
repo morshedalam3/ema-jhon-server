@@ -1,5 +1,5 @@
 const express = require('express')
-const bodyParser = require('body-parser');
+
 const cors = require('cors')
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config()
@@ -10,7 +10,7 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const app = express()
 const port = 5000
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(cors());
 
 
